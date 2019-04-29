@@ -1,0 +1,52 @@
+@layout('main')
+@section('content')
+<br>
+@if(old('notification'))
+<div class="alert alert-success" role="alert">
+  {{ old('notification') }}
+</div>
+@endif
+@if(old('notify'))
+<div class="alert alert-danger" role="alert">
+  {{ old('notify') }}
+</div>
+@endif
+<div class="container">
+  <form action="./home/data" method="POST" enctype="multipart/form-data">
+    {{csrfField()}}
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="name_blog">Titulo Blog</label>
+          <input type="text" class="form-control" id="name_blog" name="name_blog" placeholder="Nombre Blog" required>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="sub_blog">Subtitulo Blog</label>
+          <input type="text" class="form-control" id="sub_blog" name="sub_blog" placeholder="Subtitulo" required>  
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="text_blog">Texto Blog</label>
+          <textarea class="form-control" id="text_blog" name="text_blog" rows="3" placeholder="De que trata?" required></textarea>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="autor_blog">Autor Blog</label>
+          <input type="text" class="form-control" id="autor_blog" name="autor_blog" placeholder="Autor" required>          
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="ImagenBlog">Seleccionar imagen de portada</label>
+      <input type="file" name="img_blog[]" class="form-control-file" id="img_blog" multiple required>
+    </div>
+    <button type="submit" class="btn btn-success">Blog!</button>
+  </form>
+</div>
+@endsection
